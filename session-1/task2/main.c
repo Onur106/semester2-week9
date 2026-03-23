@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,17 +8,43 @@
 
 int main( void ) {
 
-    // create an empty stack
+    printf("=== STACK TESTS START ===\n");
+
+    
     Stack *stack = createStack();
 
-    // push a node
-    push(stack,1);
-    traverseI(stack->top);  // display the stack
+   
+    printf("\n--- Testing PUSH ---\n");
+    push(stack, 10);
+    push(stack, 20);
+    push(stack, 30);
+    
+    printf("Stack content after pushing 10, 20, 30:\n");
+    traverseI(stack->top);  
+    
+    printf("\n--- Testing POP ---\n");
+    Node *poppedNode = pop(stack);
 
-    // free stack memory
+    if (poppedNode != NULL) {
+        printf("Popped value: %d\n", poppedNode->data->value);
+        
+        
+        freeNode(poppedNode); 
+    } else {
+        printf("Stack was empty!\n");
+    }
+
+   
+    printf("Stack content after pop:\n");
+    traverseI(stack->top);
+   
+
+    
     freeNodes( stack->top );
-    // free stack
+    
     free(stack);
+
+    printf("\n=== TESTS FINISHED (Memory Freed) ===\n");
 
     return 0;
 }

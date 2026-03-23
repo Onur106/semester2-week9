@@ -17,8 +17,16 @@ int main( void ) {
     second->next = third;
     
     // print the data by following links
-    traverseI( first );
+    
+    printf("TraverseI: ");
+    traverseI(first);
 
+    // BURAYA EKLE (freeNodes'dan ÖNCE)
+    printf("TraverseW: ");
+    traverseW(first);
+
+    printf("TraverseR: ");
+    traverseR(first);
     // free all node memory (using traversal)
     freeNodes( first );
 
